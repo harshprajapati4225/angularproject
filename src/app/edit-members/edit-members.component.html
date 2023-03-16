@@ -1,0 +1,44 @@
+<app-teamleader-header></app-teamleader-header>
+<div *ngIf="!addUserCheck">
+    <button class="flex mr-auto ml-96 mt-10 p-2 bg-sky-500 text-white" (click)="addUsers()">+ add user</button>
+<table class="text-center m-10">
+  <tr class="border-4 p-2">
+    <th class="border-4 p-2">Username</th>
+    <th class="border-4 p-2">Password</th>
+    <th class="border-4 p-2">Edit</th>
+  </tr>
+  <!-- <tr class="border-4 p-2" *ngFor="let data of userData">
+        <td class="border-4 p-2">{{data.data.username}}</td>
+        <input type="text" class="hidden">
+        <td class="border-4 p-2">{{data.data.password}}</td>
+        <td class="border-4 p-2"><button><i class="fa-solid fa-pen-to-square"></i></button></td>
+    </tr> -->
+  <tr *ngFor="let user of userData; let i = index">
+    <td class="border-4 p-2  bg-sky-500 text-white">{{user.username}}
+    </td>
+    <td class="border-4 p-2  bg-sky-500 text-white">{{user.password}}
+    </td>
+    <td class="border-4 p-2 bg-sky-500 text-white"><button (click)="deleteUser(i)">Delete</button>
+    </td>
+  </tr>
+</table>
+</div>
+<div class="text-center" *ngIf="addUserCheck">
+  <button class="flex mr-auto ml-96 mt-10 p-2 bg-sky-500 text-white" (click)="showUser()">
+    Show user list
+  </button>
+  <form
+    (submit)="
+      addUser(id, username.value, password.value);
+      username.value = '';
+      password.value = ''
+    "
+    class="border-2 border-solid w-96 border-black p-10 inset-1 flex m-10 flex-col bg-white"
+  >
+    <label>Username:</label>
+    <input class="m-5 border-black border-1 border p-2" type="text" #username required />
+    <label>Password:</label>
+    <input class="m-5 border-black border-1 border p-2" type="text" #password required />
+    <button class="text-center bg-sky-400 p-1" type="submit">Add</button>
+  </form>
+</div>

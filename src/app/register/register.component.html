@@ -1,0 +1,93 @@
+<section class="bg-sky-400 w-screen h-max justify-center flex items-center">
+  <div>
+    <form
+      class="border-2 border-solid border-black p-10 inset-1 flex flex-col bg-white"
+      (ngSubmit)="onSubmit()"
+    >
+      <label for="username">USERNAME</label>
+      <input
+        class="m-1 border-black border-1 border p-2 inline"
+        type="text"
+        name="username"
+        placeholder="username"
+        [(ngModel)]="username"
+      />
+      <p class="text-white bg-red-900 text-2xl font-bolder" *ngIf="!validUsername">Enter Username</p>
+      <br />
+      <label for="password">PASSWORD</label>
+      <input
+        class="m-1 border-black border-1 border p-2"
+        type="password"
+        placeholder="password"
+        name="password"
+        [(ngModel)]="password"
+      />
+      <label for="username">PROFILE PIC LINK</label>
+      <input
+        class="m-1 border-black border-1 border p-2 inline"
+        type="text"
+        name="username"
+        placeholder="Enter profile pic link here"
+        [(ngModel)]="profilePic"
+      />
+      <p class="text-white bg-red-900 text-2xl font-bolder" *ngIf="!validPassword">Enter Password</p>
+      <br />
+      <label for="address">ADDRESS</label>
+      <textarea
+        class="m-1 border-black border-1 border p-2"
+        placeholder="Input address"
+        name="address"
+        [(ngModel)]="address"
+      ></textarea>
+      <p class="text-white bg-red-900 text-2xl font-bolder" *ngIf="!validAddress">Enter Address</p>
+      <br />
+      <label for="technologies">TECHNOLOGIES</label>
+      <div *ngFor="let checkbox of checkboxValues">
+        <label>
+          <input type="checkbox" name="myCheckbox" [(ngModel)]="checkbox.checked" [value]="checkbox.value" (change)="getSelectedValues()">
+          {{ checkbox.value }}
+        </label>
+      </div>
+      <p class="text-white bg-red-900 text-2xl font-bolder" *ngIf="!validTech">Enter At Least One Technology</p>
+      <br />
+      <label for="phone">PHONE NUMBER</label>
+      <input
+        class="m-1 border-black border-1 border p-2"
+        type="text"
+        placeholder="phone number"
+        name="PHONENUMBER"
+        [(ngModel)]="phone"
+      />
+      <p class="text-white bg-red-900 text-2xl font-bolder" *ngIf="!validPhone">Enter Phone Number</p>
+      <br />
+      <label for="email">EMAIL</label>
+      <input
+        class="m-1 border-black border-1 border p-2"
+        type="email"
+        placeholder="email"
+        name="email"
+        [(ngModel)]="email"
+      />
+      <p class="text-white bg-red-900 text-2xl font-bolder" *ngIf="!validEmail">Enter Email</p>
+      <br />
+      <label for="gender">GENDER</label>
+      <div class="m-1">
+        <input type="radio" id="male" name="gender" value="Male" [(ngModel)]="gender" />
+        <label for="male">Male</label><br />
+        <input type="radio" id="female" name="gender" value="Female" [(ngModel)]="gender" />
+        <label for="female">Female</label><br />
+        <input type="radio" id="other" name="gender" value="Other" [(ngModel)]="gender"/>
+        <label for="other">Other</label><br />
+      </div>
+      <label for="terms">TERMS AND CONDITIONS</label>
+      <div>
+        <input type="checkbox" id="terms" name="terms" [(ngModel)]="terms" name="terms"/>
+        <label for="terms">I agree to the terms and conditions</label
+        ><br /><br />
+      </div>
+      <p class="text-white bg-red-900 text-2xl font-bolder" *ngIf="!validTerm">Accept Terms and Conditions</p>
+      <button class="text-center bg-sky-400 p-1" type="submit">Register</button>
+      <a class="text-center p-1" routerLink="/">Back to Login</a>
+    </form>
+  </div>
+</section>

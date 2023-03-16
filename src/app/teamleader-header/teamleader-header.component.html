@@ -1,0 +1,19 @@
+<header  *ngIf="currentUserRole =='teamleader'" class="flex flex-row bg-black text-blue-900 font-extrabold ">
+    <button routerLink="/teamleader" class="h-20 ml-20">DashBoard</button>
+    <button routerLink="/tasks" class="h-20 ml-20">
+      Tasks
+    </button>
+    <button routerLink="/editmembers" class="h-20 ml-20">
+      Edit Members
+    </button>
+    <button routerLink="/profile" class="h20 ml-20">Profile</button>
+    <button  (click)="logout()" class="ml-20 mr-0">logout</button>
+   <p class="ml-auto mr-20 mt-7 ">hello , {{currentUser}}</p>
+</header>
+<header *ngIf="currentUserRole=='teammember'" class="flex flex-row bg-black text-blue-900 font-extrabold">
+  <button routerLink="/teammember" class="h-20 ml-20">Deshboard</button>
+  <button routerLink="/profile" class="h-20 ml-20">Profile</button>
+  <button class="h-20 ml-20" (click)="logout()">logout</button>
+  <p class="ml-auto mr-20 mt-7">hello , {{currentUser}}</p>
+</header>
+
